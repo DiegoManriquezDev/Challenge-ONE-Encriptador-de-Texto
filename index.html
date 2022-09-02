@@ -9,12 +9,10 @@
 </head>
 <body>
     
-    <header>
-        <img src="imagenes/Logo.png" alt="Logo de alura">
-    </header>
 
     <main>
-        <section>
+        <section class="main-content">
+            <img class="logo-header" src="imagenes/Logo.png" alt="Logo de alura">
             <textarea class="texto" cols="40" rows="10" placeholder="Ingrese el texto aqui"></textarea>
             <div class="botones">
                 <button class="encriptar" onclick="btnEncriptar()">
@@ -26,8 +24,10 @@
             </div>
         </section>
 
-        <section>
-            <textarea class="mensaje" cols="20" rows="8"></textarea>
+        <section class="main-result">
+            <!--<img class="imagen-munheco" src="imagenes/Muñeco.png" alt="imagen-munheco">-->
+            <textarea class="mensaje-encriptacion" cols="20" rows="8">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente praesentium temporibus distinctio dolores sed pariatur neque ducimus optio ab, mollitia aliquam ad minima consequuntur accusantium, obcaecati commodi! Laboriosam, doloremque aut.
+            </textarea>
             <button class="copiar">Copiar</button>
         </section>
     </main>
