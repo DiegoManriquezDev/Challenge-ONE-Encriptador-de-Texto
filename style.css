@@ -79,6 +79,9 @@ main{
     align-items: center;
     justify-content: space-between;
 }
+.sin-mensaje{
+    justify-content: flex-start;
+}
 
 .imagen-munheco{
     width: 336px;
@@ -110,7 +113,7 @@ main{
 }
 
 .no-mensaje{
-    display: inline-block;
+    
 }
 
 .ayuda{
