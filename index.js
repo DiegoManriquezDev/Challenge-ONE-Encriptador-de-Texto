@@ -2,17 +2,16 @@ const btnEncriptar = document.querySelector('.encriptar');
 const btnDesencriptar = document.querySelector('.desencriptar');
 const textArea = document.querySelector('.texto');
 const btnCopiar = document.querySelector('.copiar');
-const resultado = document.querySelector('.mensaje-encriptacion');
 
 const criptologia = [["e","enter"],['i','imes'],['a','ai'],['o','ober'],['u','ufat']];
-
+// Imagen inicial.
 const resultadoPrincipal = document.querySelector('.main-result');
 const fragment = document.createDocumentFragment();
 
-const imagenMunheco = document.createElement('img');
-imagenMunheco.classList.add('imagen-munheco');
-imagenMunheco.src = 'imagenes/Muñeco.png';
-imagenMunheco.alt = 'imagen-munheco';
+const crearImagenMunheco = document.createElement('img');
+crearImagenMunheco.classList.add('imagen-munheco');
+crearImagenMunheco.src = 'imagenes/Muñeco.png';
+crearImagenMunheco.alt = 'imagen-munheco';
 
 const p1 = document.createElement('p');
 p1.classList.add('no-mensaje');
@@ -22,11 +21,48 @@ const p2 = document.createElement('p');
 p2.classList.add('ayuda');
 p2.textContent = 'Ingresa el texto que desees encriptar o desencriptar';
 
+const imagenMunheco = document.querySelector('.imagen-munheco');
 
-fragment.appendChild(imagenMunheco);
-fragment.appendChild(p1);
-fragment.appendChild(p2);
-resultadoPrincipal.appendChild(fragment);
+function mostrarImagenInicial(){
+    fragment.appendChild(crearImagenMunheco);
+    fragment.appendChild(p1);
+    fragment.appendChild(p2);
+    resultadoPrincipal.appendChild(fragment);
+}
+
+mostrarImagenInicial();
+
+
+// Mensaje encriptado o desencriptado.
+
+const textareaEncriptacion = document.createElement('textarea');
+textareaEncriptacion.classList.add('mensaje-encriptacion');
+textareaEncriptacion.cols = 20;
+textareaEncriptacion.rows = 8;
+
+const crearBtnCopiar = document.createElement('button');
+crearBtnCopiar.classList.add('copiar');
+crearBtnCopiar.textContent = 'Copiar';
+
+
+function eliminarImagenInicial(){
+crearImagenMunheco.remove();
+p1.remove();
+p2.remove();
+}
+
+function mostrarContenedorDeEncriptado(){
+    fragment.appendChild(textareaEncriptacion);
+    fragment.appendChild(crearBtnCopiar);
+    resultadoPrincipal.appendChild(fragment);
+}
+
+function eliminarContenedorEncriptado(){
+    textareaEncriptacion.remove();
+    crearBtnCopiar.remove();
+}
+
+
 
 function encriptar(mensaje){
     mensaje = mensaje.toLowerCase();
@@ -51,22 +87,32 @@ function desencriptar(mensaje){
 
 
 function copiarAlPortapapeles() {
-    resultado.select();
-    navigator.clipboard.writeText(resultado.value);
+    textareaEncriptacion.select();
+    navigator.clipboard.writeText(textareaEncriptacion.value);
     alert('Texto copiado');
-    resultado.innerHTML = ""
+    textareaEncriptacion.innerHTML = ""
 }
 
 
 btnEncriptar.addEventListener("click",function(){
-    resultado.innerHTML = encriptar(textArea.value);
+    eliminarImagenInicial();
+    mostrarContenedorDeEncriptado();
+    textareaEncriptacion.innerHTML = encriptar(textArea.value);
 });
 
 
 btnDesencriptar.addEventListener("click",function(){
-    resultado.innerHTML = desencriptar(textArea.value);
+    eliminarImagenInicial();
+    mostrarContenedorDeEncriptado();
+    textareaEncriptacion.innerHTML = desencriptar(textArea.value);
 });
 
-btnCopiar.addEventListener("click",function(){
-    copiarAlPortapapeles();
+
+
+crearBtnCopiar.addEventListener("click",function(){
+     copiarAlPortapapeles();
+     eliminarContenedorEncriptado();
+     mostrarImagenInicial();
 });
+
+
