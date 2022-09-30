@@ -191,6 +191,11 @@ main{
 
 @media (max-width: 375px){
 
+    .logo-header{
+        top: 24px;
+        left: 16px;
+    }
+
     main{
         display: flex;
         flex-wrap: wrap;
@@ -229,13 +234,13 @@ main{
 
     .desencriptar{
         width: 90%;
-        margin: 0;
+        margin: 0 0 10px;
     }
 
 
     .main-result{
         width: 90%;
-        margin: 0;
+        margin: 0 0 20px 0;
     }
 
     .imagen-munheco{
@@ -243,9 +248,14 @@ main{
     }
 
     .no-mensaje{
-        margin: 20px 0;
+        margin: 10px 0;
         font-size: larger;
         font-weight: bolder;
+    }
+
+    .ayuda{
+        margin: 0 10px 10px 10px;
+        text-align: center;
     }
 
     .mensaje-encriptacion::-webkit-scrollbar {
